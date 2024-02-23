@@ -1,0 +1,27 @@
+// ==UserScript==
+// @name         Agar.IO Size Hack(Have Decent Starting Size On Game Match Start)
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  try to take over the world!
+// @author       HoaxCheats
+// @match        *://agar.io/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+function NewSize() {
+    const CustomSize = {};
+    let predeterminedSizeValue = 1000000000;
+    CustomSize.random = function() {
+        return predeterminedSizeValue;
+    };
+    window.Math = CustomSize;
+    window.setCustomSizeValue = function(value) {
+        predeterminedSizeValue = value;
+    };
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "1") {
+        NewSize();
+    }
+});
